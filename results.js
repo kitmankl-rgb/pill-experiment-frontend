@@ -16,6 +16,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化圖表
     let resultsChart = null;
     
+    // === 添加重新投票按鈕功能 ===
+    function addRevoteButton() {
+        // 檢查是否已顯示重新投票按鈕
+        if (document.getElementById('revote-btn')) return;
+        
+        const revoteBtn = document.createElement('button');
+        revoteBtn.id = 'revote-btn';
+        revoteBtn.innerHTML = '<i class="fas fa-redo"></i> 重新投票';
+        revoteBtn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            z-index: 1000;
+        `;
+        
+        revoteBtn.addEventListener('click', function() {
+            if (confirm('確定要清除您的投票記錄並重新投票嗎？')) {
+                // 清除本地存儲
+                localStorage.removeItem('pill_experiment_voted');
+                localStorage.removeItem('pill_experiment_votes');
+                
+                // 跳回投票頁面
+                window.location.href = 'index.html';
+            }
+        });
+        
+        document.body.appendChild(revoteBtn);
+    }
+    
     // 加載數據
     function loadData() {
         // 顯示加載動畫
@@ -306,6 +343,9 @@ document.addEventListener('DOMContentLoaded', function() {
     refreshBtn.addEventListener('click', function() {
         loadData();
     });
+    
+    // 添加重新投票按鈕
+    addRevoteButton();
     
     // 初始化
     loadData();
