@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loader = document.getElementById('loader');
     
     // 使用您的 Vercel 后端地址
-    const API_BASE_URL = 'https://pill-experiment-backend.vercel.app/api';
+    const API_BASE_URL = 'https://pill-experiment-api.vercel.app/api';
     
     let allResponses = [];
     let filteredResponses = [];
