@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loader = document.getElementById('loader');
     
     // 使用您的 Vercel 后端地址
-    const API_BASE_URL = 'https://pill-experiment-backend.vercel.app/api';
+    const API_BASE_URL = 'https://pill-experiment-api.vercel.app/api';
     
     // 生成隨機暱稱
     const adjectives = ['勇敢', '深思', '謹慎', '樂觀', '悲觀', '理性', '感性', '好奇', '果斷', '猶豫'];
