@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藥丸選擇實驗</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-pills"></i> 藥丸選擇實驗</h1>
+            <p class="subtitle">一個關於選擇與後果的社會實驗</p>
+        </header>
+
+        <main>
+            <div class="experiment-card">
+                <div class="scenario">
+                    <h2><i class="fas fa-question-circle"></i> 實驗情境</h2>
+                    <p class="scenario-text">
+                        你必須服用一粒藥丸。如果超過50%的人選擇藍色藥丸，則所有人都能生存。
+                        但如果人數不超過50%，那麼選擇紅色藥丸的人生存，選擇藍色藥丸的人死亡。
+                    </p>
+                    <p class="scenario-text-en">
+                        You must take a capsule. If more than 50% of people choose the blue capsule, everyone survives. 
+                        But if the number doesn't exceed 50%, those who choose the red capsule survive, then those who choose the blue capsule die.
+                    </p>
+                    <p class="question">你會選擇哪一個？</p>
+                </div>
+
+                <div class="options">
+                    <div class="option blue-option" data-option="blue">
+                        <div class="pill-icon blue-pill">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <h3>藍色藥丸</h3>
+                        <p class="option-desc">選擇相信他人，共同生存</p>
+                        <button class="select-btn" data-option="blue">選擇此選項</button>
+                    </div>
+
+                    <div class="option red-option" data-option="red">
+                        <div class="pill-icon red-pill">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <h3>紅色藥丸</h3>
+                        <p class="option-desc">選擇自我保護，確保生存</p>
+                        <button class="select-btn" data-option="red">選擇此選項</button>
+                    </div>
+                </div>
+
+                <div class="stats-preview">
+                    <h3><i class="fas fa-chart-bar"></i> 當前統計</h3>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-label">藍色藥丸</div>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar blue-bar" id="blue-stat-bar">0%</div>
+                            </div>
+                            <div class="stat-count" id="blue-count">0 票</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">紅色藥丸</div>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar red-bar" id="red-stat-bar">0%</div>
+                            </div>
+                            <div class="stat-count" id="red-count">0 票</div>
+                        </div>
+                    </div>
+                    <div class="total-votes">總投票數: <span id="total-votes">0</span></div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> 實驗說明</h3>
+                <ul>
+                    <li>您將獲得一個隨機暱稱用於記錄投票</li>
+                    <li>投票後需要填寫選擇理由</li>
+                    <li>可以查看所有參與者的選擇和理由</li>
+                    <li>實驗結果會即時更新</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>社會實驗專案 &copy; 2023</p>
+            <p class="footer-note">此實驗僅用於學術研究，所有數據將匿名處理</p>
+        </footer>
+    </div>
+
+    <!-- 理由填寫彈窗 -->
+    <div class="modal" id="reason-modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-comment-dots"></i> 請說明您的選擇理由</h2>
+            <p>您選擇了：<span id="selected-option-text"></span></p>
+            <p>您的隨機暱稱：<span id="user-nickname"></span></p>
+            
+            <div class="form-group">
+                <label for="reason">請簡述您的選擇理由（至少10個字）：</label>
+                <textarea id="reason" placeholder="例如：我選擇藍色藥丸是因為我相信大多數人會合作，這樣大家都能生存..."></textarea>
+                <div class="char-count">字數: <span id="char-count">0</span></div>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="submit-reason" class="submit-btn">提交理由</button>
+                <button id="cancel-reason" class="cancel-btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加載動畫 -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p>處理中...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

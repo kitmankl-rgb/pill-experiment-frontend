@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實驗結果 - 藥丸選擇實驗</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> 實驗結果</h1>
+            <p class="subtitle">查看所有參與者的選擇與理由</p>
+        </header>
+
+        <main>
+            <div class="experiment-card">
+                <div class="results-summary">
+                    <h2><i class="fas fa-poll"></i> 投票統計</h2>
+                    <div class="summary-stats">
+                        <div class="summary-stat">
+                            <div class="summary-icon blue-pill">
+                                <i class="fas fa-capsules"></i>
+                            </div>
+                            <div class="summary-details">
+                                <h3>藍色藥丸</h3>
+                                <div class="summary-count" id="summary-blue-count">0 票</div>
+                                <div class="summary-percent" id="summary-blue-percent">0%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-stat">
+                            <div class="summary-icon red-pill">
+                                <i class="fas fa-capsules"></i>
+                            </div>
+                            <div class="summary-details">
+                                <h3>紅色藥丸</h3>
+                                <div class="summary-count" id="summary-red-count">0 票</div>
+                                <div class="summary-percent" id="summary-red-percent">0%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-stat">
+                            <div class="summary-icon total-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="summary-details">
+                                <h3>總參與者</h3>
+                                <div class="summary-count" id="summary-total-count">0 人</div>
+                                <div class="summary-percent">100%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="outcome-prediction">
+                        <h3><i class="fas fa-balance-scale"></i> 當前結果預測</h3>
+                        <p id="outcome-text" class="outcome-text">等待更多投票...</p>
+                    </div>
+                </div>
+                
+                <div class="results-chart">
+                    <h3><i class="fas fa-chart-pie"></i> 比例分佈圖</h3>
+                    <div class="chart-container">
+                        <canvas id="results-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="all-responses">
+                <h2><i class="fas fa-comments"></i> 所有參與者的選擇與理由</h2>
+                <div class="responses-controls">
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">全部</button>
+                        <button class="filter-btn" data-filter="blue">只看藍色藥丸</button>
+                        <button class="filter-btn" data-filter="red">只看紅色藥丸</button>
+                    </div>
+                    <div class="sort-options">
+                        <select id="sort-by">
+                            <option value="newest">最新優先</option>
+                            <option value="oldest">最早優先</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="responses-list" id="responses-list">
+                    <!-- 回應內容將由JavaScript動態生成 -->
+                    <div class="no-responses">
+                        <i class="fas fa-inbox"></i>
+                        <p>尚未有任何回應</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-actions">
+                <a href="index.html" class="action-btn">
+                    <i class="fas fa-vote-yea"></i> 返回投票
+                </a>
+                <button id="refresh-results" class="action-btn">
+                    <i class="fas fa-sync-alt"></i> 更新結果
+                </button>
+            </div>
+            <p>社會實驗專案 &copy; 2023</p>
+            <p class="footer-note">此實驗僅用於學術研究，所有數據將匿名處理</p>
+        </footer>
+    </div>
+    
+    <!-- 加載動畫 -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p>載入中...</p>
+    </div>
+    
+    <!-- 引入Chart.js用於圖表 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="results.js"></script>
+</body>
+</html>
